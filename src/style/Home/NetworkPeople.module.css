@@ -1,0 +1,227 @@
+.section {
+  margin: var(--section-space) auto;
+}
+
+.section h2 {
+  max-width: 620px;
+  font-size: clamp(30px, 5vw, 60px);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.intro {
+  max-width: 570px;
+  margin-top: 16px;
+  color: #565656;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid #e7e4dc;
+  border-radius: var(--card-radius-large);
+  background: var(--white);
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: #b3a6df;
+}
+
+.portrait {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 300px;
+  border-radius: calc(var(--card-radius-large) - 1px) calc(var(--card-radius-large) - 1px) 0 0;
+  background: var(--grey-bg);
+  object-fit: cover;
+  object-position: center 32%;
+}
+
+.details {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.details h3,
+.dialog h3 {
+  color: #30254f;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.15;
+}
+
+.meta {
+  margin-top: 5px;
+  color: #565656;
+  font-size: 13px;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.skills li {
+  padding: 3px 8px;
+  border-radius: var(--card-radius-small);
+  background: #efedff;
+  color: #373485;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.card:nth-child(even) .skills li {
+  background: #dcf8ed;
+  color: #235044;
+}
+
+.section .open {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.section button:focus-visible {
+  outline: 2px solid #4647a2;
+  outline-offset: 3px;
+}
+
+.dialog {
+  position: fixed;
+  inset: 0;
+  width: min(460px, calc(100% - 28px));
+  max-height: calc(100% - 28px);
+  margin: auto;
+  padding: 24px;
+  overflow-y: auto;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--card-radius-large);
+  background: var(--white);
+}
+
+.dialog::backdrop {
+  background: rgb(25 20 37 / 55%);
+}
+
+.dialog h3 {
+  padding-inline-end: 38px;
+}
+
+.bio {
+  margin-top: 12px;
+  color: #565656;
+}
+
+.closeForm {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.section .close {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--grey-bg);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.pitch {
+  margin-top: 10px;
+  color: #40394c;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.section .write,
+.section .save {
+  width: fit-content;
+  padding: 7px 13px;
+  border: 1px solid #e1dbef;
+  border-radius: var(--card-radius-small);
+  background: var(--surface-accent);
+  color: #332771;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.section .write {
+  position: relative;
+  z-index: 2;
+  margin-top: 14px;
+}
+
+.section .write:hover,
+.section .save:hover:not(:disabled) {
+  border-color: #b3a6df;
+}
+
+.section .save:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.messageForm {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.messageForm label {
+  display: grid;
+  gap: 6px;
+  color: #30254f;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.messageForm textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #dcd4ee;
+  border-radius: var(--card-radius-small);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 400;
+  resize: vertical;
+}
+
+.messageForm textarea:focus-visible {
+  outline: 2px solid #4647a2;
+  outline-offset: 2px;
+}
+
+.notice {
+  color: #235044;
+  font-size: 13px;
+}
+
+.notice:empty {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .portrait {
+    aspect-ratio: 4 / 3;
+    object-position: center 24%;
+  }
+}

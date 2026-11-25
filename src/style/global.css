@@ -1,0 +1,110 @@
+
+:root {
+  --card-radius-large: 12px;
+  --card-radius-small: 8px;
+  --ink: #242033;
+  --surface-border: #e7e3ec;
+  --surface-accent: #f0edf7;
+  --section-space: clamp(68px, 10vw, 126px);
+  --section-space-compact: clamp(46px, 7vw, 82px);
+
+  /* 🎨 Кольори */
+  --yellow: #FFE889;
+  --green: #70FEC5;
+  --gray-light: #F7F7F7;
+  --white: #ffffff;
+  --black: #000000;
+  --purple: #6176FF;
+  --blue: #42A5F5;
+  --orange: #FF9F5A;
+  --grey: #838383;
+  --grey-bg: #F7F7F7;
+
+    --main-g: linear-gradient(
+    135deg,
+    var(--green) 0%,
+    var(--yellow) 35%,
+    var(--orange) 70%,
+    var(--purple) 100%
+  );
+--yo-gr: linear-gradient(
+  135deg,
+  var(--yellow) 0%,
+  var(--orange) 100%
+);
+
+--gp-gr: linear-gradient(
+  135deg,
+  var(--green) 0%,
+  var(--purple) 100%
+);
+
+  /* ✍️ Шрифти */
+  --font-title: "Geologica", sans-serif;
+  --font-text: "Geologica", sans-serif;
+
+  /* 📏 Адаптивні розміри */
+  --h1-size: clamp(48px, 8vw, 100px);
+  --h2-size: clamp(32px, 4vw, 60px);
+  --h3-size: clamp(18px, 4vw, 40px);
+  --h4-size: clamp(16px, 3vw, 32px);
+ 
+
+  --p-size-lg: clamp(16px, 2vw, 18px);
+  --p-size-sm: 16px;
+}
+body {
+  font-family: var(--font-text);
+  font-size: 16px;
+  background-color: var(--grey-bg);
+}
+h1 {
+  font-family: var(--font-title);
+  font-size: var(--h1-size);
+
+}
+
+h2 {
+  font-family: var(--font-title);
+  font-size: var(--h2-size);
+}
+
+h3 {
+  font-family: var(--font-title);
+  font-size: var(--h3-size);
+  line-height: 1;
+}
+
+p {
+  font-family: var(--font-text);
+  font-size: var(--p-size-sm);
+  color: var(--orange);
+}
+
+.container {
+  max-width: 1200px;   /* або 1440px, залежно від дизайну */
+  width: 100%;         /* займає всю доступну ширину */
+  margin: 0 auto;      /* центрує блок */
+  padding-left: 15px;  /* відступи зліва */
+  padding-right: 15px; /* відступи справа */
+}
+
+.btn {
+  padding: 12px 24px;
+  border: 2px solid transparent;
+  border-radius: 16px;
+
+  /* background: var(--main-g); */
+  background: var(--orange);
+  color: var(--black);
+
+  transition: all .3s ease;
+}
+
+.btn:hover {
+  background:
+    linear-gradient(white, white) padding-box,
+    var(--main-g) border-box;
+
+  border: 2px solid transparent;
+}

@@ -1,0 +1,335 @@
+.board {
+  margin: clamp(40px, 7vw, 76px) auto var(--section-space);
+  color: var(--ink);
+}
+
+.heading,
+.actions,
+.cardTop,
+.cardBottom,
+.inboxHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.heading h2 {
+  font-size: clamp(26px, 4vw, 44px);
+  line-height: 1.12;
+}
+
+.board .action,
+.board .secondary {
+  width: fit-content;
+  min-height: 38px;
+  padding: 6px 12px;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--card-radius-small);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.board .action {
+  border-color: transparent;
+  background: var(--section-color, #d9d6fb);
+}
+
+.board :is(.action, .secondary):hover:not(:disabled) {
+  border-color: #aa9fc8;
+}
+
+.board .action:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.filters,
+.fieldPair {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.filters {
+  margin-top: 18px;
+  padding: 14px;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--card-radius-large);
+  background: var(--white);
+}
+
+.filters label,
+.fields label {
+  display: grid;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.board :is(select, input, textarea) {
+  width: 100%;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid #ddd7e7;
+  border-radius: var(--card-radius-small);
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 400;
+}
+
+.board textarea {
+  resize: vertical;
+}
+
+.board :is(button, select, input, textarea):focus-visible {
+  outline: 2px solid #524493;
+  outline-offset: 2px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 17px;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--card-radius-large);
+  background: var(--white);
+  overflow-wrap: anywhere;
+}
+
+.type,
+.skills li {
+  padding: 3px 8px;
+  border-radius: var(--card-radius-small);
+  background: var(--surface-accent);
+  color: #41336d;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.type[data-type="offering"] {
+  background: #e3f5ec;
+  color: #245344;
+}
+
+.card h3,
+.dialog h3 {
+  font-size: clamp(18px, 2.4vw, 24px);
+  line-height: 1.2;
+}
+
+.meta {
+  color: #5b5367;
+  font-size: 13px;
+}
+
+.description {
+  color: #443d50;
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-block: 3px 5px;
+}
+
+.cardBottom {
+  margin-top: auto;
+  padding-top: 9px;
+  border-top: 1px solid var(--surface-border);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.notice,
+.empty,
+.error {
+  font-size: 14px;
+}
+
+.notice {
+  margin-top: 12px;
+  color: #235044;
+}
+
+.notice:empty {
+  margin: 0;
+}
+
+.empty {
+  margin-top: 16px;
+  color: #565166;
+}
+
+.empty p {
+  margin-bottom: 8px;
+  color: inherit;
+}
+
+.error {
+  color: #9c2751;
+}
+
+.dialog {
+  position: fixed;
+  inset: 0;
+  width: min(560px, calc(100% - 28px));
+  max-height: calc(100% - 28px);
+  margin: auto;
+  padding: 24px;
+  overflow-y: auto;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--card-radius-large);
+  background: var(--white);
+  color: var(--ink);
+}
+
+.dialog::backdrop {
+  background: rgb(25 20 37 / 55%);
+}
+
+.dialog h3 {
+  padding-inline-end: 38px;
+  margin-bottom: 8px;
+}
+
+.closeForm {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.board .close {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--grey-bg);
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.fields,
+.inbox {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.fieldPair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.inboxHeader p {
+  flex: 1 1 180px;
+}
+
+.inbox li {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--card-radius-small);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .filters,
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .board {
+    margin-top: 32px;
+  }
+
+  .heading {
+    align-items: stretch;
+  }
+
+  .heading h2 {
+    flex-basis: 100%;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    width: 100%;
+  }
+
+  .board :is(.action, .secondary, select, input) {
+    min-height: 44px;
+  }
+
+  .actions > button,
+  .fields > button {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dialog {
+    inset: auto 0 0;
+    width: 100%;
+    max-width: none;
+    max-height: calc(100dvh - 12px);
+    margin: 0;
+    padding: 18px 16px max(18px, env(safe-area-inset-bottom));
+    border-radius: var(--card-radius-large) var(--card-radius-large) 0 0;
+    overscroll-behavior-y: contain;
+  }
+
+  .board :is(select, input, textarea) {
+    font-size: 16px;
+  }
+
+  .board .close {
+    width: 44px;
+    height: 44px;
+  }
+
+  .dialog h3 {
+    min-height: 38px;
+    padding-inline-end: 48px;
+  }
+}
+
+@media (max-width: 440px) {
+  .filters,
+  .fieldPair,
+  .cardBottom {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cardBottom {
+    display: grid;
+  }
+
+  .cardBottom > button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,219 @@
+.route {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 84px);
+  margin: var(--section-space) auto;
+}
+
+.intro h2 {
+  max-width: 520px;
+  font-size: clamp(32px, 5vw, 60px);
+  line-height: 1.06;
+}
+
+.intro p,
+.stepContent p {
+  max-width: 470px;
+  margin-top: 16px;
+  color: #565656;
+}
+
+.route .start {
+  padding: 11px 15px;
+  margin-top: 24px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: var(--main-g);
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.map {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e7e4dc;
+  border-radius: var(--card-radius-large);
+  background: var(--white);
+  box-shadow: 0 10px 32px rgb(27 22 39 / 7%);
+}
+
+.stops {
+  padding: 24px 12px 17px;
+  border-bottom: 1px solid #eeebf5;
+  background-color: #f8f7ff;
+  background-image: radial-gradient(#dcd6f2 1px, transparent 1px);
+  background-size: 15px 15px;
+}
+
+.stops ol {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.stops ol::before,
+.stops ol::after {
+  position: absolute;
+  top: 19px;
+  left: calc(100% / 6);
+  right: calc(100% / 6);
+  height: 3px;
+  border-radius: 10px;
+  content: "";
+}
+
+.stops ol::before {
+  background: #ddd7ef;
+}
+
+.stops ol::after {
+  background: var(--main-g);
+  clip-path: inset(0 calc(100% - var(--progress)) 0 0);
+}
+
+.stops li {
+  position: relative;
+  z-index: 1;
+}
+
+.route .stop {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #484153;
+  font-size: clamp(12px, 2vw, 14px);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.marker {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ded8f0;
+  border-radius: 50%;
+  background: var(--white);
+  color: #514370;
+  font-size: 16px;
+}
+
+.stop[data-reached="true"] .marker {
+  border-color: #d9d2fb;
+  background: #efedff;
+  color: #30254f;
+}
+
+.stop[aria-current="step"] {
+  color: #332771;
+}
+
+.stop[aria-current="step"] .marker {
+  border-color: var(--white);
+  background: var(--main-g);
+  color: var(--black);
+  box-shadow: 0 0 0 3px #d9d2fb;
+}
+
+.stepPanel {
+  min-height: 212px;
+  padding: clamp(20px, 4vw, 32px);
+}
+
+.stepContent h3 {
+  color: #26203b;
+  font-size: clamp(25px, 3.5vw, 38px);
+  line-height: 1.12;
+}
+
+.stepContent p {
+  margin-top: 10px;
+}
+
+.route .stepLink {
+  display: inline-block;
+  margin-top: 16px;
+  border-radius: 4px;
+  color: #4647a2;
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-inline: clamp(20px, 4vw, 32px);
+  padding: 14px 0 18px;
+  border-top: 1px solid #eeebf5;
+}
+
+.route .back,
+.route .next {
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: #f2eeff;
+  color: #332771;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.route .back {
+  background: transparent;
+}
+
+.route .back:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.route button:focus-visible,
+.route a:focus-visible {
+  outline: 2px solid #4647a2;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stops ol::after {
+    transition: clip-path 420ms ease;
+  }
+
+  .stop[aria-current="step"] .marker {
+    animation: marker-arrive 380ms ease-out;
+  }
+
+  .stepContent {
+    animation: step-arrive 300ms ease-out both;
+  }
+}
+
+@keyframes marker-arrive {
+  0% { transform: scale(0.85); }
+  65% { transform: scale(1.09); }
+  100% { transform: scale(1); }
+}
+
+@keyframes step-arrive {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 780px) {
+  .route {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

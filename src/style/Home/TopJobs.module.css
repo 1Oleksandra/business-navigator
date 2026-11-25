@@ -1,0 +1,125 @@
+.jobs {
+  margin: var(--section-space-compact) auto;
+}
+
+.header {
+  margin-bottom: clamp(18px, 3vw, 30px);
+}
+
+.header h2 {
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-size: clamp(30px, 4.5vw, 48px);
+  line-height: 1.1;
+}
+
+.header p {
+  max-width: 420px;
+  color: #565656;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+.list,
+.actions {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.job,
+.resumeCard,
+.vacancyCard {
+  padding: 16px;
+  border: 1px solid var(--surface-border);
+  background: var(--white);
+}
+
+.job {
+  border-radius: var(--card-radius-small);
+}
+
+.job h3,
+.actionTitle {
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.actionTitle {
+  display: block;
+  font-family: var(--font-title);
+  font-weight: 700;
+}
+
+.job h4 {
+  margin-top: 4px;
+  color: #514769;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.job p,
+.actionDescription {
+  margin-top: 8px;
+  color: #565656;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.actionDescription {
+  display: block;
+  font-family: var(--font-text);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.tags span {
+  padding: 3px 8px;
+  border-radius: var(--card-radius-small);
+  background: var(--surface-accent);
+  color: #514769;
+  font-size: 12px;
+}
+
+.resumeCard,
+.vacancyCard {
+  padding: 20px;
+  border-color: transparent;
+  text-align: left;
+  cursor: pointer;
+  border-radius: var(--card-radius-large);
+  background:
+    var(--job-action-fill) padding-box,
+    var(--job-action-gradient) border-box;
+}
+
+:is(.resumeCard, .vacancyCard):focus-visible {
+  outline: 2px solid #4647a2;
+  outline-offset: 3px;
+}
+
+.resumeCard {
+  --job-action-gradient: var(--yo-gr);
+  --job-action-fill: linear-gradient(135deg, #fff0b8, #ffddc5);
+}
+
+.vacancyCard {
+  --job-action-gradient: var(--gp-gr);
+  --job-action-fill: linear-gradient(135deg, #d8f7e9, #e5e6fb);
+}
+
+@media (max-width: 700px) {
+  .content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

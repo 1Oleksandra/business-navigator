@@ -1,0 +1,81 @@
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-inline-start: auto;
+}
+
+.controls button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #e5e0eb;
+  border-radius: var(--card-radius-small);
+  background: var(--white);
+  color: #332771;
+  font-size: 21px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.controls button:hover:not([aria-disabled="true"]) {
+  border-color: #b3a6df;
+  background: #efedff;
+}
+
+.controls button[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.controls button:focus-visible {
+  outline: 2px solid #4647a2;
+  outline-offset: 3px;
+}
+
+.track {
+  --slide-gap: clamp(12px, 2vw, 20px);
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 2 * var(--slide-gap)) / 3);
+  gap: var(--slide-gap);
+  margin: clamp(14px, 3vw, 34px) -5px 0;
+  padding: 5px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 5px;
+  scrollbar-width: none;
+}
+
+.track > * {
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .track {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (max-width: 940px) {
+  .track {
+    grid-auto-columns: calc((100% - var(--slide-gap)) / 2);
+  }
+}
+
+@media (max-width: 480px) {
+  .track {
+    grid-auto-columns: 100%;
+  }
+}

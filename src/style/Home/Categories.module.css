@@ -1,0 +1,89 @@
+.slider {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding-block: 8px 12px;
+  border-top: 1px solid var(--surface-border);
+}
+
+.viewport {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #d6d0df transparent;
+}
+
+.track,
+.list {
+  display: flex;
+  width: max-content;
+}
+
+.list {
+  flex: none;
+  gap: 8px;
+  padding-inline-end: 8px;
+}
+
+.list li {
+  flex: none;
+  padding: 5px 10px;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--card-radius-small);
+  background: var(--white);
+  color: #565166;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.slider .toggle {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  padding: 0;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--card-radius-small);
+  background: var(--white);
+  color: #514769;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.viewport:focus-visible,
+.slider .toggle:focus-visible {
+  outline: 2px solid #4647a2;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .viewport {
+    overflow: hidden;
+  }
+
+  .track {
+    animation: scroll-categories 44s linear infinite;
+  }
+
+  .track[data-paused="true"],
+  .viewport:hover .track,
+  .viewport:focus .track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .repeat,
+  .slider .toggle {
+    display: none;
+  }
+}
+
+@keyframes scroll-categories {
+  to {
+    transform: translateX(-50%);
+  }
+}
